@@ -1,0 +1,30 @@
+<ion-content>
+	<ion-img id="logo-img" src="assets/LOGO4.png"></ion-img>
+	<form id="login-form" [formGroup]="loginFormGroup" (ngSubmit)="login()">
+		<ion-text>
+			<h2 id="login-h2">LOGIN</h2>
+		</ion-text>
+		<ion-item id="mobile-number-item"> 
+			<ion-avatar slot="start" id="mobile-number-avatar">
+				<ion-img src="assets/mobile.png" id="mobile-number-img"></ion-img>
+			</ion-avatar>   
+			<ion-input id="mobile-number-input" name="mobileNumber" placeholder="Mobile number" formControlName="mobileNumber" type="text" value="61298765432"></ion-input> 
+		</ion-item>
+	
+		<ion-item id="password-item">
+			<ion-avatar slot="start" id="password-avatar">
+				<ion-img src="assets/lock icon.png" id="password-img"></ion-img>
+			</ion-avatar>
+			<ion-input id="password-input" name="password" placeholder="Password" formControlName="password" type="password"></ion-input>
+		</ion-item>
+		<ion-button id="forgot-password-button" fill="clear" expand="full">Forgot Password?</ion-button>
+		<ion-button id="login-button" expand="full" color="secondary" [disabled]="!loginFormGroup.valid" type="submit" value="12345678">login</ion-button>
+	</form>
+	<p id="sign-up-button" routerLink="/registration">Sign up</p>
+	<ion-img id="footer-img" src="assets/CrisCross3.png"></ion-img> 
+
+		<div *ngIf="mobileNumber?.errors.maxlength">
+			    Phone number should 
+			  </div>
+</ion-content> 
+	

@@ -1,0 +1,38 @@
+<ion-header>
+ 
+</ion-header>
+
+<ion-content> 
+  <ion-img id="img" src="assets/LOGO4.png"></ion-img>
+  
+  <div id="container">
+    <form id="formRegistration">
+      <ion-label id="h-title">
+        REGISTRATION
+      </ion-label>
+      
+        <ion-card>
+          <ion-input id="textInput" [(ngModel)]="phone" name="phone" type="number"><ion-icon name="phone-portrait-outline" item-left></ion-icon></ion-input>
+      </ion-card>
+      
+      <ion-card>
+        <ion-input id="textInput" [(ngModel)]="password" name="password" type="password"><ion-icon name="lock-closed" item-left></ion-icon></ion-input>
+      </ion-card>
+      
+      <section class="full-width">
+        <ion-button id="signupbtn" (click)="regVal()" expand="full" color="secondary">SIGNUP</ion-button> 
+  
+      </section>
+
+    </form>
+   
+
+  </div>
+
+  <div class="ion-text-end"><ion-label id="login" routerLink="/login">Login</ion-label></div>
+  
+
+  <ion-img id="img" src="assets/CrisCross3.png"></ion-img>
+ 
+</ion-content>
+

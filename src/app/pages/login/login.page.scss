@@ -1,0 +1,96 @@
+#logo-img { 
+    width: 100px;
+    margin: 0 auto;
+    margin-top: 4rem;
+    margin-bottom: 1rem;
+}
+
+#login-form {
+   background-color: #0cb0d3;
+   padding: 15px 15px 2.5rem 15px;
+   #login-h2 {
+       margin-top: 0px;
+       color: white;
+       font-weight: 550;
+       margin-bottom: 3px;
+       margin-left: 5px;
+   }
+   #mobile-number-item { 
+       margin-bottom: 10px;
+       border-radius: 5px;
+       --background: #eee;
+       #mobile-number-avatar { 
+           width: 25px;
+           height: 25px;
+           margin-right: 10px;
+           #mobile-number-img { 
+               width: 25px;
+               height: 25px;
+               padding: 0;
+               margin-right: -15px;
+           }
+       }
+       #mobile-number-input { 
+           border-left: 1.5px solid #999;
+           height: 65%;
+           --padding-start: 10px;
+       }
+   }
+   
+   
+   #password-item { 
+       border-radius: 5px;
+       --background: #eee; 
+       #password-avatar {
+           width: 25px;
+           height: 25px;
+           margin-right: 10px;
+           #password-img {
+               width: 25px;
+               height: 25px;
+               padding: 0;
+               margin-right: -15px;
+           }
+       }
+       #password-input {
+           border-left: 1.5px solid #999;
+           height: 65%;
+           --padding-start: 10px;
+       }
+   }
+   #forgot-password-button {
+       text-transform: none;
+       margin: 1rem 0rem 1rem 0rem;
+       color: white;	
+       font-size: 12px;
+       font-weight: lighter;
+   } 
+   #login-button {
+       --box-shadow: none; 
+       --padding-top: 24px;
+       --padding-bottom: 24px;
+       font-weight: 550;
+       font-size: 18px;
+   }
+}
+
+#sign-up-button {
+   text-transform: none;
+   float: right;
+   margin: 1rem 1rem 0rem 0rem; 
+   color: #0cb0d3;
+}
+
+#footer-img {
+   min-height: 10rem;
+   width: 10rem;
+   margin: 0 auto;
+   margin-top: 5rem;
+}
+
+.vertical-lign-div {
+   position: absolute;
+   border-left: 6px solid green;
+   height: 500px;
+}
+

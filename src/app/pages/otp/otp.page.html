@@ -1,0 +1,72 @@
+<ion-header>
+ 
+</ion-header>
+
+<ion-content>
+  <ion-img id="img" src="assets/LOGO4.png"></ion-img>
+  
+  <div id="container">
+    
+    <ion-label id="h-title" class="ion-text-center">
+      <h1>OTP VERIFICATION</h1>
+    </ion-label>
+      <ion-label id="sub-title" class="ion-text-center">
+        <h3>Please enter your 6-digit One-Time-Pin</h3>
+     </ion-label>
+      
+      <ion-grid id="code-grid">
+        <ion-row id="row">
+          <ion-col>
+            <div>
+              <ion-input id="textInput" [(ngModel)]="cd1" name="cd1" required="true"  maxlength="1" type="one-time-pin" #Field1 (keyup)="gotoNextField(Field2)" autofocus="true"></ion-input>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div>
+              <ion-input id="textInput" [(ngModel)]="cd2" name="cd2" required="true"  maxlength="1" type="one-time-pin" #Field2 (keyup)="gotoNextField(Field3)"></ion-input>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div>
+              <ion-input id="textInput" [(ngModel)]="cd3" name="cd3" required="true"  maxlength="1" type="one-time-pin" #Field3 (keyup)="gotoNextField(Field4)"></ion-input>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div>
+              <ion-input id="textInput" [(ngModel)]="cd4" name="cd4" required="true"  maxlength="1" type="one-time-pin" #Field4 (keyup)="gotoNextField(Field5)"></ion-input>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div>
+              <ion-input id="textInput" [(ngModel)]="cd5" name="cd5" required="true"  maxlength="1" type="one-time-pin" #Field5 (keyup)="gotoNextField(Field6)"></ion-input>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div>
+              <ion-input id="textInput" [(ngModel)]="cd6" name="cd6" required="true"  maxlength="1" type="one-time-pin" #Field6 (keyup)="otpvalidate()"></ion-input>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+    
+    <section id="otpresend" class="full-width">
+      <ion-label id="sub-title" class="ion-text-center">
+        <h3>Didn't received OTP?<span id="span-resend"><strong><p>Re-send</p></strong></span></h3>
+     </ion-label>
+    </section>
+    <section id="otpdesc" class="full-width">
+      <ion-label id="sub-title" class="ion-text-center">
+        <h3>A one-time password <strong><i>(OTP)</i></strong>,also known as one-time pin or dynamic password. It's a password that is valid for 
+          only one login session or transaction, on a computer system or other digital device.</h3>
+     </ion-label>
+    </section>
+   
+
+  </div>
+  
+
+  <ion-img id="img" src="assets/CrisCross3.png"></ion-img>
+ 
+</ion-content>
+

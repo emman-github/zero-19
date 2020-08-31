@@ -1,0 +1,5 @@
+Blue		: #0cb0d3
+Gray		: #ebebeb
+Faded Purple	: #805b87
+Purple		: #600088
+White		: #ffffff
