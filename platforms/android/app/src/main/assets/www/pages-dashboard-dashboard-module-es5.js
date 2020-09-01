@@ -22,7 +22,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n    <ion-title>dashboard</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n\n  <ion-button id=\"login-button\" (click)=\"logout()\" expand=\"full\" color=\"secondary\">logout</ion-button>\n\n</ion-content>\n";
+      __webpack_exports__["default"] = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-title>dashboard</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n\r\n  <ion-button id=\"login-button\" (click)=\"logout()\" expand=\"full\" color=\"secondary\">logout</ion-button>\r\n\r\n</ion-content>\r\n";
       /***/
     },
 
