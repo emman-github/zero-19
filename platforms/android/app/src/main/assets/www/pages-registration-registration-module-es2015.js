@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\r\n \r\n</ion-header>\r\n\r\n<ion-content> \r\n  <ion-img id=\"img\" src=\"assets/LOGO4.png\"></ion-img>\r\n  \r\n  <div id=\"container\">\r\n    <form id=\"formRegistration\">\r\n      <ion-label id=\"h-title\">\r\n        REGISTRATION\r\n      </ion-label>\r\n      \r\n        <ion-card>\r\n          <ion-input id=\"textInput\" [(ngModel)]=\"phone\" name=\"phone\" type=\"number\"><ion-icon name=\"phone-portrait-outline\" item-left></ion-icon></ion-input>\r\n      </ion-card>\r\n      \r\n      <ion-card>\r\n        <ion-input id=\"textInput\" [(ngModel)]=\"password\" name=\"password\" type=\"password\"><ion-icon name=\"lock-closed\" item-left></ion-icon></ion-input>\r\n      </ion-card>\r\n      \r\n      <section class=\"full-width\">\r\n        <ion-button id=\"signupbtn\" (click)=\"regVal()\" expand=\"full\" color=\"secondary\">SIGNUP</ion-button> \r\n  \r\n      </section>\r\n\r\n    </form>\r\n   \r\n\r\n  </div>\r\n\r\n  <div class=\"ion-text-end\"><ion-label id=\"login\" routerLink=\"/login\">Login</ion-label></div>\r\n  \r\n\r\n  <ion-img id=\"img\" src=\"assets/CrisCross3.png\"></ion-img>\r\n \r\n</ion-content>\r\n\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\r\n \r\n</ion-header>\r\n\r\n<ion-content> \r\n  <ion-img id=\"img\" src=\"assets/LOGO4.png\"></ion-img>\r\n  \r\n  <div id=\"container\">\r\n    <form id=\"formRegistration\">\r\n      <ion-label id=\"h-title\">\r\n        REGISTRATION\r\n      </ion-label>\r\n      \r\n        <ion-card>\r\n          <ion-input id=\"textInput\" [(ngModel)]=\"phone\" name=\"phone\" type=\"text\"><ion-icon name=\"phone-portrait-outline\" item-left></ion-icon></ion-input>\r\n      </ion-card>\r\n      \r\n      <ion-card>\r\n        <ion-input id=\"textInput\" [(ngModel)]=\"password\" name=\"password\" type=\"password\"><ion-icon name=\"lock-closed\" item-left></ion-icon></ion-input>\r\n      </ion-card>\r\n      \r\n      <section class=\"full-width\">\r\n        <ion-button id=\"signupbtn\" (click)=\"regVal()\" expand=\"full\" color=\"secondary\">SIGNUP</ion-button> \r\n  \r\n      </section>\r\n\r\n    </form>\r\n   \r\n\r\n  </div>\r\n\r\n  <div class=\"ion-text-end\"><ion-label id=\"login\" routerLink=\"/login\">Login</ion-label></div>\r\n  \r\n\r\n  <ion-img id=\"img\" src=\"assets/CrisCross3.png\"></ion-img>\r\n \r\n</ion-content>\r\n\r\n");
 
 /***/ }),
 
@@ -150,7 +150,7 @@ let RegistrationPage = class RegistrationPage {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
             const areFieldsNotEmpty = this.phone !== "" && this.password !== "";
             if (areFieldsNotEmpty) {
-                let users = yield this.storage.get('users');
+                let users = JSON.parse(yield this.storage.get('users'));
                 if (users === null) {
                     users = [];
                 }
@@ -158,6 +158,7 @@ let RegistrationPage = class RegistrationPage {
                     "mobileNumber": this.phone,
                     "password": this.password
                 };
+                console.log(users);
                 users.push(user);
                 yield this.storage.set('users', users);
                 yield this.router.navigate(['otp']);

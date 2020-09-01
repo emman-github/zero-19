@@ -121,8 +121,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
-/* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/__ivy_ngcc__/fesm2015/ionic-storage.js");
+/* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/__ivy_ngcc__/fesm2015/ionic-storage.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
 
 
 
@@ -141,12 +141,12 @@ let LoginPage = class LoginPage {
     ngOnInit() {
         this.loginFormGroup = this.formBuilder.group({
             mobileNumber: ['', [
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required,
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].maxLength(16)
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_5__["Validators"].required,
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_5__["Validators"].maxLength(16)
                 ]],
             password: ['', [
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required,
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].maxLength(16)
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_5__["Validators"].required,
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_5__["Validators"].maxLength(16)
                 ]],
         });
     }
@@ -162,6 +162,7 @@ let LoginPage = class LoginPage {
             // await this.storage.set('user', JSON.stringify(user)); 
             // console.log(JSON.parse(await this.storage.get('user')));
             let users = yield this.storage.get('users');
+            console.log(users);
             if (users === null) {
                 users = [];
             }
@@ -172,20 +173,18 @@ let LoginPage = class LoginPage {
                 if (doesUserExists) {
                     this.router.navigate(['/dashboard']);
                     loading.dismiss();
-                    return false;
-                }
-                else {
-                    let alert = yield this.alertCtrl.create({
-                        header: `User doesn't exists`,
-                        message: 'Incorrect mobile number or password',
-                        buttons: ['Ok']
-                    });
-                    yield alert.present();
-                    loading.dismiss();
+                    this.loginFormGroup.reset();
                     return false;
                 }
             }
-            console.log(users);
+            let alert = yield this.alertCtrl.create({
+                header: `User doesn't exists`,
+                message: 'Incorrect mobile number or password',
+                buttons: ['Ok']
+            });
+            this.loginFormGroup.reset();
+            yield alert.present();
+            yield loading.dismiss();
         });
     }
 };
@@ -193,8 +192,8 @@ LoginPage.ctorParameters = () => [
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"] },
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["AlertController"] },
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] },
-    { type: _ionic_storage__WEBPACK_IMPORTED_MODULE_5__["Storage"] },
-    { type: _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormBuilder"] },
+    { type: _ionic_storage__WEBPACK_IMPORTED_MODULE_4__["Storage"] },
+    { type: _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormBuilder"] },
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["LoadingController"] }
 ];
 LoginPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([

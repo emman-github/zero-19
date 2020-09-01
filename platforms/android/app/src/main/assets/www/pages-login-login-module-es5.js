@@ -225,15 +225,15 @@
       /* harmony import */
 
 
-      var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-      /*! @angular/forms */
-      "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
+      var _ionic_storage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+      /*! @ionic/storage */
+      "./node_modules/@ionic/storage/__ivy_ngcc__/fesm2015/ionic-storage.js");
       /* harmony import */
 
 
-      var _ionic_storage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-      /*! @ionic/storage */
-      "./node_modules/@ionic/storage/__ivy_ngcc__/fesm2015/ionic-storage.js");
+      var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+      /*! @angular/forms */
+      "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
 
       var LoginPage = /*#__PURE__*/function () {
         function LoginPage(navCtrl, alertCtrl, router, storage, formBuilder, loadingController) {
@@ -251,8 +251,8 @@
           key: "ngOnInit",
           value: function ngOnInit() {
             this.loginFormGroup = this.formBuilder.group({
-              mobileNumber: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].maxLength(16)]],
-              password: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].maxLength(16)]]
+              mobileNumber: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_5__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_5__["Validators"].maxLength(16)]],
+              password: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_5__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_5__["Validators"].maxLength(16)]]
             });
           }
         }, {
@@ -285,6 +285,7 @@
 
                     case 9:
                       users = _context.sent;
+                      console.log(users);
 
                       if (users === null) {
                         users = [];
@@ -293,9 +294,9 @@
                       console.log(users);
                       i = 0;
 
-                    case 13:
+                    case 14:
                       if (!(i < users.length)) {
-                        _context.next = 32;
+                        _context.next = 25;
                         break;
                       }
 
@@ -309,32 +310,31 @@
 
                       this.router.navigate(['/dashboard']);
                       loading.dismiss();
+                      this.loginFormGroup.reset();
                       return _context.abrupt("return", false);
 
                     case 22:
-                      _context.next = 24;
+                      i++;
+                      _context.next = 14;
+                      break;
+
+                    case 25:
+                      _context.next = 27;
                       return this.alertCtrl.create({
                         header: "User doesn't exists",
                         message: 'Incorrect mobile number or password',
                         buttons: ['Ok']
                       });
 
-                    case 24:
+                    case 27:
                       alert = _context.sent;
-                      _context.next = 27;
+                      this.loginFormGroup.reset();
+                      _context.next = 31;
                       return alert.present();
 
-                    case 27:
-                      loading.dismiss();
-                      return _context.abrupt("return", false);
-
-                    case 29:
-                      i++;
-                      _context.next = 13;
-                      break;
-
-                    case 32:
-                      console.log(users);
+                    case 31:
+                      _context.next = 33;
+                      return loading.dismiss();
 
                     case 33:
                     case "end":
@@ -357,9 +357,9 @@
         }, {
           type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]
         }, {
-          type: _ionic_storage__WEBPACK_IMPORTED_MODULE_5__["Storage"]
+          type: _ionic_storage__WEBPACK_IMPORTED_MODULE_4__["Storage"]
         }, {
-          type: _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormBuilder"]
+          type: _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormBuilder"]
         }, {
           type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["LoadingController"]
         }];

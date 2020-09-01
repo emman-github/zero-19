@@ -38,7 +38,7 @@ export class RegistrationPage implements OnInit {
     const areFieldsNotEmpty = this.phone !== "" && this.password !== "";
 
     if (areFieldsNotEmpty) {
-      let users = await this.storage.get('users');
+      let users: Array<any> = JSON.parse(await this.storage.get('users'));
       if (users === null) {
         users = [];
       }
@@ -46,6 +46,8 @@ export class RegistrationPage implements OnInit {
         "mobileNumber": this.phone,
         "password": this.password
       };
+
+      console.log(users);
 
       users.push(user);
 
