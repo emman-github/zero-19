@@ -12,7 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HTTP } from '@ionic-native/http/ngx';
-import {HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http'
 
 
 @NgModule({

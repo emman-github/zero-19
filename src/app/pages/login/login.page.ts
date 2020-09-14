@@ -4,6 +4,8 @@ import { Route } from '@angular/compiler/src/core';
 import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
 import { FormBuilder, Validators, NgForm } from "@angular/forms";
+import { ConfigService } from 'src/app/services/config/config.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -24,7 +26,9 @@ export class LoginPage implements OnInit {
     private router: Router,
     private storage: Storage,
     private formBuilder: FormBuilder,
-    private loadingController: LoadingController
+    private loadingController: LoadingController,
+    private configService: ConfigService,
+    private httpClient: HttpClient
   ) {}
 
   ngOnInit() {
@@ -49,36 +53,32 @@ export class LoginPage implements OnInit {
 
     const user = this.loginFormGroup.value; 
     console.log(user);
-    // await this.storage.set('user', JSON.stringify(user)); 
-    // console.log(JSON.parse(await this.storage.get('user')));
-    let users: any = await this.storage.get('users');
-    console.log(users);
-    if (users === null) {
-      users = [];
-    }
-    console.log(users);
-    for (var i = 0; i < users.length; i++) {
-      console.log(users[i])
-      let doesUserExists = user.mobileNumber === users[i].mobileNumber && user.password === users[i].password;
 
-      if (doesUserExists) { 
+    let formData = new FormData();
+    formData.append('mobile_number', user.mobileNumber);
+    formData.append('password', user.password);
+    // formData.append('mobile_number', '09123456789');
+    // formData.append('password', 'password');
+
+    this.httpClient.post(`${this.configService.baseUrl}login_user`, formData).subscribe(async(response: any) => {
+      if (response.status === 'error') {
+        let alert = await this.alertCtrl.create({
+          header :`User doesn't exists`,
+          message :'Incorrect mobile number or password',
+          buttons:['Ok']
+        });
+
+        this.loginFormGroup.reset();
+        
+        await alert.present();
+        await loading.dismiss();    
+      } else if (response.status === 'success') {
         this.router.navigate(['/dashboard']);
         loading.dismiss();
-        this.loginFormGroup.reset();
-        return false;
+        this.loginFormGroup.reset(); 
       }
-    }
-    
-    let alert = await this.alertCtrl.create({
-      header :`User doesn't exists`,
-      message :'Incorrect mobile number or password',
-      buttons:['Ok']
+      console.log(response);
     });
-
-    this.loginFormGroup.reset();
-    
-    await alert.present();
-    await loading.dismiss();    
   }
 
   // async loginVal(){
