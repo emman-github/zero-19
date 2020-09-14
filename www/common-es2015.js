@@ -432,6 +432,36 @@ const openURL = async (url, ev, direction, animation) => {
 
 
 
+/***/ }),
+
+/***/ "./src/app/services/config/config.service.ts":
+/*!***************************************************!*\
+  !*** ./src/app/services/config/config.service.ts ***!
+  \***************************************************/
+/*! exports provided: ConfigService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ConfigService", function() { return ConfigService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+
+
+let ConfigService = class ConfigService {
+    constructor() {
+        this.baseUrl = 'http://zero19.mcxcarstorage.com.au/wp-json/zero/';
+    }
+};
+ConfigService.ctorParameters = () => [];
+ConfigService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+    })
+], ConfigService);
+
+
+
 /***/ })
 
 }]);

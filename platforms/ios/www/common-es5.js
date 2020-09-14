@@ -1,4 +1,6 @@
 (function () {
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
   function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
   function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -655,6 +657,54 @@
       }();
       /***/
 
+    },
+
+    /***/
+    "./src/app/services/config/config.service.ts":
+    /*!***************************************************!*\
+      !*** ./src/app/services/config/config.service.ts ***!
+      \***************************************************/
+
+    /*! exports provided: ConfigService */
+
+    /***/
+    function srcAppServicesConfigConfigServiceTs(module, __webpack_exports__, __webpack_require__) {
+      "use strict";
+
+      __webpack_require__.r(__webpack_exports__);
+      /* harmony export (binding) */
+
+
+      __webpack_require__.d(__webpack_exports__, "ConfigService", function () {
+        return ConfigService;
+      });
+      /* harmony import */
+
+
+      var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+      /*! tslib */
+      "./node_modules/tslib/tslib.es6.js");
+      /* harmony import */
+
+
+      var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+      /*! @angular/core */
+      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+
+      var ConfigService = function ConfigService() {
+        _classCallCheck(this, ConfigService);
+
+        this.baseUrl = 'http://zero19.mcxcarstorage.com.au/wp-json/zero/';
+      };
+
+      ConfigService.ctorParameters = function () {
+        return [];
+      };
+
+      ConfigService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+      })], ConfigService);
+      /***/
     }
   }]);
 })();

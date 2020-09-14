@@ -22,7 +22,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<ion-header>\n \n</ion-header>\n\n<ion-content> \n  <ion-img id=\"img\" src=\"assets/LOGO4.png\"></ion-img>\n  \n  <div id=\"container\">\n    <form id=\"formRegistration\">\n      <ion-label id=\"h-title\">\n        REGISTRATION\n      </ion-label>\n      \n        <ion-card>\n          <ion-input id=\"textInput\" [(ngModel)]=\"phone\" name=\"phone\" type=\"number\"><ion-icon name=\"phone-portrait-outline\" item-left></ion-icon></ion-input>\n      </ion-card>\n      \n      <ion-card>\n        <ion-input id=\"textInput\" [(ngModel)]=\"password\" name=\"password\" type=\"password\"><ion-icon name=\"lock-closed\" item-left></ion-icon></ion-input>\n      </ion-card>\n      \n      <section class=\"full-width\">\n        <ion-button id=\"signupbtn\" (click)=\"regVal()\" expand=\"full\" color=\"secondary\">SIGNUP</ion-button> \n  \n      </section>\n\n    </form>\n   \n\n  </div>\n\n  <div class=\"ion-text-end\"><ion-label id=\"login\" routerLink=\"/login\">Login</ion-label></div>\n  \n\n  <ion-img id=\"img\" src=\"assets/CrisCross3.png\"></ion-img>\n \n</ion-content>\n\n";
+      __webpack_exports__["default"] = "<ion-header>\n \n</ion-header>\n\n<ion-content> \n  <ion-img id=\"img\" src=\"assets/LOGO4.png\"></ion-img>\n  \n  <div id=\"container\">\n    <form id=\"formRegistration\">\n      <ion-label id=\"h-title\">\n        REGISTRATION\n      </ion-label>\n      \n        <ion-card>\n          <ion-input id=\"textInput\" [(ngModel)]=\"phone\" name=\"phone\" type=\"text\"><ion-icon name=\"phone-portrait-outline\" item-left></ion-icon></ion-input>\n      </ion-card>\n      \n      <ion-card>\n        <ion-input id=\"textInput\" [(ngModel)]=\"password\" name=\"password\" type=\"password\"><ion-icon name=\"lock-closed\" item-left></ion-icon></ion-input>\n      </ion-card>\n      \n      <section class=\"full-width\">\n        <ion-button id=\"signupbtn\" (click)=\"regVal()\" expand=\"full\" color=\"secondary\">SIGNUP</ion-button> \n  \n      </section>\n\n    </form>\n   \n\n  </div>\n\n  <div class=\"ion-text-end\"><ion-label id=\"login\" routerLink=\"/login\">Login</ion-label></div>\n  \n\n  <ion-img id=\"img\" src=\"assets/CrisCross3.png\"></ion-img>\n \n</ion-content>\n\n";
       /***/
     },
 
@@ -274,15 +274,17 @@
                       areFieldsNotEmpty = this.phone !== "" && this.password !== "";
 
                       if (!areFieldsNotEmpty) {
-                        _context.next = 15;
+                        _context.next = 18;
                         break;
                       }
 
-                      _context.next = 4;
+                      _context.t0 = JSON;
+                      _context.next = 5;
                       return this.storage.get('users');
 
-                    case 4:
-                      users = _context.sent;
+                    case 5:
+                      _context.t1 = _context.sent;
+                      users = _context.t0.parse.call(_context.t0, _context.t1);
 
                       if (users === null) {
                         users = [];
@@ -292,42 +294,43 @@
                         "mobileNumber": this.phone,
                         "password": this.password
                       };
+                      console.log(users);
                       users.push(user);
-                      _context.next = 10;
+                      _context.next = 13;
                       return this.storage.set('users', users);
 
-                    case 10:
-                      _context.next = 12;
+                    case 13:
+                      _context.next = 15;
                       return this.router.navigate(['otp']);
 
-                    case 12:
+                    case 15:
                       this.sendOTP();
-                      _context.next = 19;
+                      _context.next = 22;
                       break;
 
-                    case 15:
+                    case 18:
                       alert = this.alertCtrl.create({
                         header: 'Alert',
                         message: 'Please don\'t Empty the fields!',
                         buttons: ['Ok']
                       });
-                      _context.next = 18;
+                      _context.next = 21;
                       return alert;
 
-                    case 18:
+                    case 21:
                       _context.sent.present();
 
-                    case 19:
-                      _context.t0 = console;
-                      _context.next = 22;
+                    case 22:
+                      _context.t2 = console;
+                      _context.next = 25;
                       return this.storage.get('users');
 
-                    case 22:
-                      _context.t1 = _context.sent;
+                    case 25:
+                      _context.t3 = _context.sent;
 
-                      _context.t0.log.call(_context.t0, _context.t1);
+                      _context.t2.log.call(_context.t2, _context.t3);
 
-                    case 24:
+                    case 27:
                     case "end":
                       return _context.stop();
                   }

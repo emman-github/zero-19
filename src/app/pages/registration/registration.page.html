@@ -18,6 +18,16 @@
       <ion-card>
         <ion-input id="textInput" [(ngModel)]="password" name="password" type="password"><ion-icon name="lock-closed" item-left></ion-icon></ion-input>
       </ion-card>
+
+      <ion-card>
+        <ion-item id="textInput">
+          <ion-select [(ngModel)]="usertype" name="usertype" placeholder="user type">
+            <ion-select-option value="individual">Individual</ion-select-option>
+            <ion-select-option value="business">Business</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-card>
+      
       
       <section class="full-width">
         <ion-button id="signupbtn" (click)="regVal()" expand="full" color="secondary">SIGNUP</ion-button> 

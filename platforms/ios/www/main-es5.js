@@ -193,9 +193,9 @@
       }, {
         path: 'login',
         loadChildren: function loadChildren() {
-          return __webpack_require__.e(
+          return Promise.all(
           /*! import() | pages-login-login-module */
-          "pages-login-login-module").then(__webpack_require__.bind(null,
+          [__webpack_require__.e("common"), __webpack_require__.e("pages-login-login-module")]).then(__webpack_require__.bind(null,
           /*! ./pages/login/login.module */
           "./src/app/pages/login/login.module.ts")).then(function (m) {
             return m.LoginPageModule;
@@ -215,9 +215,9 @@
       }, {
         path: 'otp',
         loadChildren: function loadChildren() {
-          return __webpack_require__.e(
+          return Promise.all(
           /*! import() | pages-otp-otp-module */
-          "pages-otp-otp-module").then(__webpack_require__.bind(null,
+          [__webpack_require__.e("common"), __webpack_require__.e("pages-otp-otp-module")]).then(__webpack_require__.bind(null,
           /*! ./pages/otp/otp.module */
           "./src/app/pages/otp/otp.module.ts")).then(function (m) {
             return m.OtpPageModule;
@@ -579,7 +579,7 @@
     /***/
     function _(module, exports, __webpack_require__) {
       module.exports = __webpack_require__(
-      /*! /Users/mars/Music/zero-19/src/main.ts */
+      /*! /Users/mars/Music/today/zero-19/src/main.ts */
       "./src/main.ts");
       /***/
     }

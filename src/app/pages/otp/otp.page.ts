@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { AlertController, LoadingController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
+import { ConfigService } from 'src/app/services/config/config.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-otp',
@@ -24,7 +26,11 @@ export class OtpPage implements OnInit {
   c5:any;
   c6:any;
 
-  constructor(public alertCtrl:AlertController, private router: Router , private storage: Storage) { }
+  constructor(public alertCtrl:AlertController, 
+    private router: Router , private storage: Storage,  
+    private configService: ConfigService, 
+    private httpClient:HttpClient,
+    private loadingController: LoadingController,) { }
 
   ngOnInit() {
     console.log('OTP Validation is now running...');
@@ -54,6 +60,12 @@ export class OtpPage implements OnInit {
         this.c5 = arrayOfDigits[4];
         this.c6 = arrayOfDigits[5];
         // validating otp code
+
+        const loading = await this.loadingController.create({
+          cssClass: 'my-custom-class',
+          message: 'Please wait...' 
+        });
+        //await loading.present(); 
        
           if(this.cd1 == this.c1 || this.cd2 == this.c2 || this.cd3 == this.c3 || this.cd4 == this.c4 || this.cd5 == this.c5 || this.cd6 == this.c6 ){
             let alert = this.alertCtrl.create({
@@ -62,7 +74,36 @@ export class OtpPage implements OnInit {
               buttons:['Ok']
             });
             (await alert).present();
-            this.router.navigate(['login'])
+
+                this.storage.get("users").then((val) => {
+                  let data = val;
+                  for(let Data of data){
+                    console.log(`${this.configService.baseUrl}create_new_user/?` + Data);
+                    this.httpClient.post(`${this.configService.baseUrl}create_new_user/?`,Data).subscribe(async(response: any) => {
+                      if (response.status === 'error') {
+                        let alert = await this.alertCtrl.create({
+                          header :`error`,
+                          message :'Sorry unable to register. Please try again later.',
+                          buttons:['Ok']
+                          
+                        });
+                        loading.dismiss();
+                        
+                        await alert.present();
+                        await loading.dismiss();    
+                      } else if (response.status === 'success') {
+                        this.router.navigate(['login'])
+                        loading.dismiss();
+                      }
+                      console.log(response);
+                    });
+                    this.storage.clear();
+                    
+                  }
+                  
+              
+              })
+           
           } else {
 
             let alert = this.alertCtrl.create({

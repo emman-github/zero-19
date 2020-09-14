@@ -228,14 +228,21 @@
       var _ionic_storage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
       /*! @ionic/storage */
       "./node_modules/@ionic/storage/__ivy_ngcc__/fesm2015/ionic-storage.js");
+      /* harmony import */
+
+
+      var src_app_services_config_config_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+      /*! src/app/services/config/config.service */
+      "./src/app/services/config/config.service.ts");
 
       var OtpPage = /*#__PURE__*/function () {
-        function OtpPage(alertCtrl, router, storage) {
+        function OtpPage(alertCtrl, router, storage, configService) {
           _classCallCheck(this, OtpPage);
 
           this.alertCtrl = alertCtrl;
           this.router = router;
           this.storage = storage;
+          this.configService = configService;
         }
 
         _createClass(OtpPage, [{
@@ -346,6 +353,8 @@
           type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]
         }, {
           type: _ionic_storage__WEBPACK_IMPORTED_MODULE_4__["Storage"]
+        }, {
+          type: src_app_services_config_config_service__WEBPACK_IMPORTED_MODULE_5__["ConfigService"]
         }];
       };
 
