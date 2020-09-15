@@ -78,6 +78,9 @@ export class LoginPage implements OnInit {
         this.loginFormGroup.reset(); 
       }
       console.log(response);
+    }, async(error) => {
+      await loading.dismiss();
+      alert(JSON.stringify(error));
     });
   }
 
