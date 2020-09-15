@@ -95,7 +95,6 @@ export class RegistrationPage implements OnInit {
       });
       (await alert).present();
     } */
-
   
   }
 
