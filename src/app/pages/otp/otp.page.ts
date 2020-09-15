@@ -33,9 +33,7 @@ export class OtpPage implements OnInit {
     private loadingController: LoadingController,) { }
 
   ngOnInit() {
-    console.log('OTP Validation is now running...');
-    console.log('USERS',this.storage.get('users'));
-    
+    console.log('OTP Validation is now running...'); 
   }
 
   gotoNextField(nextElement){
@@ -76,32 +74,32 @@ export class OtpPage implements OnInit {
             (await alert).present();
 
                 this.storage.get("users").then((val) => {
-                  let data = val;
-                  for(let Data of data){
-                    console.log(`${this.configService.baseUrl}create_new_user/?` + Data);
-                    this.httpClient.post(`${this.configService.baseUrl}create_new_user/?`,Data).subscribe(async(response: any) => {
-                      if (response.status === 'error') {
+
+                  let postData = new FormData();
+                  postData.append('mobile_number',val[0].mobile_number);
+                  postData.append('password',val[0].password);
+                  postData.append('user_type',val[0].user_type);
+
+                    this.httpClient.post(`${this.configService.baseUrl}create_new_user`, postData
+                  ).subscribe(async(response: any) => {
+                      if (response.status == 'error') {
                         let alert = await this.alertCtrl.create({
                           header :`error`,
                           message :'Sorry unable to register. Please try again later.',
                           buttons:['Ok']
-                          
                         });
                         loading.dismiss();
                         
                         await alert.present();
                         await loading.dismiss();    
-                      } else if (response.status === 'success') {
+                      } else if (response.status == 'success') {
                         this.router.navigate(['login'])
                         loading.dismiss();
                       }
-                      console.log(response);
+                      this.storage.clear();
                     });
-                    this.storage.clear();
-                    
-                  }
-                  
-              
+                   
+                            
               })
            
           } else {

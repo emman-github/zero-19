@@ -45,13 +45,13 @@ export class RegistrationPage implements OnInit {
       if (users === null) {
         users = [];
       }
-      /*const user = { 
+      const user = { 
         'mobile_number': this.phone,
         'password': this.password,
         'user_type': this.usertype
-      };*/
+      };
 
-      const user = 'mobile_number=' + this.phone + '&password=' + this.password+ '&user_type=' + this.usertype;
+      //const user = 'mobile_number=' + this.phone + '&password=' + this.password+ '&user_type=' + this.usertype;
 
       console.log(users);
 
@@ -102,7 +102,7 @@ export class RegistrationPage implements OnInit {
   sendOTP(){
     let code = Math.floor((Math.random()*1000000)+1);
     this.storage.set('code',code);
-    this.httpClient.get(this.baseurl+ this.userEmail+'&key='+this.secret+'&to='+this.phone +'&senderid=180038&message= Your%20ZERO-19%20verification%20code:%20' + code).subscribe( async res => {
+    this.httpClient.get(this.baseurl+ this.userEmail+'&key='+this.secret+'&to='+this.phone +'&senderid=180038&message= Your%20ZERO-19%20verification%20code:' + code).subscribe( async res => {
       if(!res){
         let alert = this.alertCtrl.create({
           header :'Alert',
