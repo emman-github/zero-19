@@ -1,0 +1,30 @@
+<ion-content id="content">
+	<ion-slides #slidesViewChild pager="true" (ionSlideWillChange)="onSlideWillChange()">
+		<ng-container *ngFor="let slide of slides">
+			<ion-slide>
+				<ion-grid>
+					<ion-row>
+						<ion-col>
+							<h1 class="ion-text-center" class="title-h1" style="position: absolute; text-align: center; width: 100%; margin: 0; z-index: 10000"><b>{{ slide.title }}</b></h1>
+							<div style="border: 30px solid #17b5d8; border-radius: 200px; max-height: 320px; max-width: 320px; text-align: center; margin: auto 0; position: relative; left: 50%; transform: translateX(-50%);">
+								<div style="border: 30px solid #23c0e2; border-radius: 200px; min-height: 260px; min-width:260px; ">
+									<div style="border: 15px solid #3bd2f3; border-radius: 200px; min-height: 200px; min-width:200px;"> 
+										<div style="border: 5px solid white; border-radius: 200px; min-height: 172px; min-width: 172px; position: absolute; top: 17%; left: 17%; z-index: 1000;"></div>
+										<ion-img [src]="slide.avatarImage" style="position: absolute; top: 8%; left: 8%; height: 217px; width: 218px;"></ion-img>  
+									</div>
+								</div>
+							</div>
+						</ion-col>
+					</ion-row>
+					<ion-row style="padding-left: 2rem; padding-right: 2rem; padding-bottom: 2rem;">
+						<ion-col>
+							<p class="paragraph-p">{{ slide.paragraph }}</p>
+						</ion-col>
+					</ion-row>
+				</ion-grid> 
+			</ion-slide>
+		</ng-container>  
+	</ion-slides>
+	<ion-button id="next-button" color="secondary" (click)="showNextSlide()" expand="full" *ngIf="isShowNextButton">Next</ion-button>
+	<ion-button id="login-button" color="secondary" (click)="showLoginPage()" expand="full" *ngIf="isShowLoginButton">Login</ion-button>
+</ion-content>
