@@ -120,16 +120,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
 /* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/__ivy_ngcc__/fesm2015/ionic-storage.js");
+/* harmony import */ var src_app_services_config_config_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/services/config/config.service */ "./src/app/services/config/config.service.ts");
+
 
 
 
 
 
 let OtpPage = class OtpPage {
-    constructor(alertCtrl, router, storage) {
+    constructor(alertCtrl, router, storage, configService) {
         this.alertCtrl = alertCtrl;
         this.router = router;
         this.storage = storage;
+        this.configService = configService;
     }
     ngOnInit() {
         console.log('OTP Validation is now running...');
@@ -180,7 +183,8 @@ let OtpPage = class OtpPage {
 OtpPage.ctorParameters = () => [
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["AlertController"] },
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] },
-    { type: _ionic_storage__WEBPACK_IMPORTED_MODULE_4__["Storage"] }
+    { type: _ionic_storage__WEBPACK_IMPORTED_MODULE_4__["Storage"] },
+    { type: src_app_services_config_config_service__WEBPACK_IMPORTED_MODULE_5__["ConfigService"] }
 ];
 OtpPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({

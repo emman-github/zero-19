@@ -225,18 +225,30 @@
       /* harmony import */
 
 
-      var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+      var _ionic_storage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+      /*! @ionic/storage */
+      "./node_modules/@ionic/storage/__ivy_ngcc__/fesm2015/ionic-storage.js");
+      /* harmony import */
+
+
+      var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
       /*! @angular/forms */
       "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
       /* harmony import */
 
 
-      var _ionic_storage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-      /*! @ionic/storage */
-      "./node_modules/@ionic/storage/__ivy_ngcc__/fesm2015/ionic-storage.js");
+      var src_app_services_config_config_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+      /*! src/app/services/config/config.service */
+      "./src/app/services/config/config.service.ts");
+      /* harmony import */
+
+
+      var _angular_common_http__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+      /*! @angular/common/http */
+      "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/http.js");
 
       var LoginPage = /*#__PURE__*/function () {
-        function LoginPage(navCtrl, alertCtrl, router, storage, formBuilder, loadingController) {
+        function LoginPage(navCtrl, alertCtrl, router, storage, formBuilder, loadingController, configService, httpClient) {
           _classCallCheck(this, LoginPage);
 
           this.navCtrl = navCtrl;
@@ -245,103 +257,106 @@
           this.storage = storage;
           this.formBuilder = formBuilder;
           this.loadingController = loadingController;
+          this.configService = configService;
+          this.httpClient = httpClient;
         }
 
         _createClass(LoginPage, [{
           key: "ngOnInit",
           value: function ngOnInit() {
             this.loginFormGroup = this.formBuilder.group({
-              mobileNumber: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].maxLength(16)]],
-              password: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].maxLength(16)]]
+              mobileNumber: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_5__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_5__["Validators"].maxLength(16)]],
+              password: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_5__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_5__["Validators"].maxLength(16)]]
             });
           }
         }, {
           key: "login",
           value: function login() {
-            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-              var loading, user, users, i, doesUserExists, alert;
-              return regeneratorRuntime.wrap(function _callee$(_context) {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+              var _this = this;
+
+              var loading, user, formData;
+              return regeneratorRuntime.wrap(function _callee2$(_context2) {
                 while (1) {
-                  switch (_context.prev = _context.next) {
+                  switch (_context2.prev = _context2.next) {
                     case 0:
-                      _context.next = 2;
+                      _context2.next = 2;
                       return this.loadingController.create({
                         cssClass: 'my-custom-class',
                         message: 'Please wait...'
                       });
 
                     case 2:
-                      loading = _context.sent;
-                      _context.next = 5;
+                      loading = _context2.sent;
+                      _context2.next = 5;
                       return loading.present();
 
                     case 5:
                       user = this.loginFormGroup.value;
-                      console.log(user); // await this.storage.set('user', JSON.stringify(user)); 
-                      // console.log(JSON.parse(await this.storage.get('user')));
+                      console.log(user);
+                      formData = new FormData();
+                      formData.append('mobile_number', user.mobileNumber);
+                      formData.append('password', user.password); // formData.append('mobile_number', '09123456789');
+                      // formData.append('password', 'password');
 
-                      _context.next = 9;
-                      return this.storage.get('users');
+                      this.httpClient.post("".concat(this.configService.baseUrl, "login_user"), formData).subscribe(function (response) {
+                        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+                          var alert;
+                          return regeneratorRuntime.wrap(function _callee$(_context) {
+                            while (1) {
+                              switch (_context.prev = _context.next) {
+                                case 0:
+                                  if (!(response.status === 'error')) {
+                                    _context.next = 11;
+                                    break;
+                                  }
 
-                    case 9:
-                      users = _context.sent;
+                                  _context.next = 3;
+                                  return this.alertCtrl.create({
+                                    header: "User doesn't exists",
+                                    message: 'Incorrect mobile number or password',
+                                    buttons: ['Ok']
+                                  });
 
-                      if (users === null) {
-                        users = [];
-                      }
+                                case 3:
+                                  alert = _context.sent;
+                                  this.loginFormGroup.reset();
+                                  _context.next = 7;
+                                  return alert.present();
 
-                      console.log(users);
-                      i = 0;
+                                case 7:
+                                  _context.next = 9;
+                                  return loading.dismiss();
 
-                    case 13:
-                      if (!(i < users.length)) {
-                        _context.next = 32;
-                        break;
-                      }
+                                case 9:
+                                  _context.next = 12;
+                                  break;
 
-                      console.log(users[i]);
-                      doesUserExists = user.mobileNumber === users[i].mobileNumber && user.password === users[i].password;
+                                case 11:
+                                  if (response.status === 'success') {
+                                    this.router.navigate(['/dashboard']);
+                                    loading.dismiss();
+                                    this.loginFormGroup.reset();
+                                  }
 
-                      if (!doesUserExists) {
-                        _context.next = 22;
-                        break;
-                      }
+                                case 12:
+                                  console.log(response);
 
-                      this.router.navigate(['/dashboard']);
-                      loading.dismiss();
-                      return _context.abrupt("return", false);
-
-                    case 22:
-                      _context.next = 24;
-                      return this.alertCtrl.create({
-                        header: "User doesn't exists",
-                        message: 'Incorrect mobile number or password',
-                        buttons: ['Ok']
+                                case 13:
+                                case "end":
+                                  return _context.stop();
+                              }
+                            }
+                          }, _callee, this);
+                        }));
                       });
 
-                    case 24:
-                      alert = _context.sent;
-                      _context.next = 27;
-                      return alert.present();
-
-                    case 27:
-                      loading.dismiss();
-                      return _context.abrupt("return", false);
-
-                    case 29:
-                      i++;
-                      _context.next = 13;
-                      break;
-
-                    case 32:
-                      console.log(users);
-
-                    case 33:
+                    case 11:
                     case "end":
-                      return _context.stop();
+                      return _context2.stop();
                   }
                 }
-              }, _callee, this);
+              }, _callee2, this);
             }));
           }
         }]);
@@ -357,11 +372,15 @@
         }, {
           type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]
         }, {
-          type: _ionic_storage__WEBPACK_IMPORTED_MODULE_5__["Storage"]
+          type: _ionic_storage__WEBPACK_IMPORTED_MODULE_4__["Storage"]
         }, {
-          type: _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormBuilder"]
+          type: _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormBuilder"]
         }, {
           type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["LoadingController"]
+        }, {
+          type: src_app_services_config_config_service__WEBPACK_IMPORTED_MODULE_6__["ConfigService"]
+        }, {
+          type: _angular_common_http__WEBPACK_IMPORTED_MODULE_7__["HttpClient"]
         }];
       };
 

@@ -302,7 +302,7 @@ const routes = [
     },
     {
         path: 'login',
-        loadChildren: () => __webpack_require__.e(/*! import() | pages-login-login-module */ "pages-login-login-module").then(__webpack_require__.bind(null, /*! ./pages/login/login.module */ "./src/app/pages/login/login.module.ts")).then(m => m.LoginPageModule)
+        loadChildren: () => Promise.all(/*! import() | pages-login-login-module */[__webpack_require__.e("common"), __webpack_require__.e("pages-login-login-module")]).then(__webpack_require__.bind(null, /*! ./pages/login/login.module */ "./src/app/pages/login/login.module.ts")).then(m => m.LoginPageModule)
     },
     {
         path: 'registration',
@@ -310,7 +310,7 @@ const routes = [
     },
     {
         path: 'otp',
-        loadChildren: () => __webpack_require__.e(/*! import() | pages-otp-otp-module */ "pages-otp-otp-module").then(__webpack_require__.bind(null, /*! ./pages/otp/otp.module */ "./src/app/pages/otp/otp.module.ts")).then(m => m.OtpPageModule)
+        loadChildren: () => Promise.all(/*! import() | pages-otp-otp-module */[__webpack_require__.e("common"), __webpack_require__.e("pages-otp-otp-module")]).then(__webpack_require__.bind(null, /*! ./pages/otp/otp.module */ "./src/app/pages/otp/otp.module.ts")).then(m => m.OtpPageModule)
     },
     {
         path: 'dashboard',
@@ -520,7 +520,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/mars/Music/zero-19/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /Users/mars/Music/today/zero-19/src/main.ts */"./src/main.ts");
 
 
 /***/ })

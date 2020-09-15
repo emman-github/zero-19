@@ -486,8 +486,8 @@ module.exports = content.locals || {};
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/mars/Music/zero-19/src/theme/variables.scss */"./src/theme/variables.scss");
-module.exports = __webpack_require__(/*! /Users/mars/Music/zero-19/src/global.scss */"./src/global.scss");
+__webpack_require__(/*! /Users/mars/Music/today/zero-19/src/theme/variables.scss */"./src/theme/variables.scss");
+module.exports = __webpack_require__(/*! /Users/mars/Music/today/zero-19/src/global.scss */"./src/global.scss");
 
 
 /***/ })
